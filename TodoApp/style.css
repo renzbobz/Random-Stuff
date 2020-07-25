@@ -1,0 +1,218 @@
+      @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+      ::-webkit-scrollbar {
+        width: 7px;
+      }
+      ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgb(255,255,255,0.1);
+        border-radius: 20px;
+      }
+      body {
+        margin: 0;
+        padding: 0;
+        background: #2c1a34;
+        color: #fff;
+        font-family: 'Nunito', sans-serif;
+      }
+      h2 {
+        margin-top: 20%;
+      }
+      #todoInput {
+        background: rgb(255,255,255,0.1);
+        padding: 15px;
+        border: none;
+        color: #fff;
+        width: 91%;
+        border-radius: 3px;
+        font-size: 1em;
+        outline: none;
+      }
+      #todoInput::placeholder { 
+        color: #eee; 
+      }
+      #todoBtn {
+        border: none;
+        font-size: 1.5em;
+        color: #7be0f9;
+        top: -40px;
+        left: 40%;
+        position: relative;
+        outline: none;
+        background: none;
+        cursor: pointer;
+        user-select: none;
+        transition: all 0.5s;
+      }
+      #todoBtn:active {
+        color: #06637a;
+        transform: scale(0.6,0.6);
+      }
+      .container {
+        max-width: 400px;
+        margin: auto;
+      }
+      .center {
+        text-align: center;
+      }
+      #todoList {
+        list-style: none;
+        border: none;
+        padding: 0;
+      }
+      .todoListContainer {
+        max-height: 380px;
+        overflow-x: hidden; 
+        overflow-y: auto;
+        margin-bottom: 15%;
+      }
+      .todoItem {
+        border: none;
+        margin-bottom: 3%;
+      }
+      .todoItem div {
+        background: rgb(255,255,255,0.1);
+        color: #eee;
+        width: 100%;
+        padding: 1px;
+        text-align: center;
+        border-radius: 3px;
+        position: relative;
+        transition: all 0.1s;
+      }
+      .todoItemHover {
+        position: relative;
+        width: 100%;
+        height: 20px;
+        background: rgb(0,0,0,0.1);
+        justify-content: space-around;
+        text-align: center;
+        display: flex;
+        border: none;
+      }
+      
+      
+      .doneTodoContainer {
+        z-index: 999;
+        background: #452752;
+        height: 400px;
+        margin-right: 5%;
+        width: 365px;
+        border-radius: 3px;
+        padding: 8px 20px;
+        position: fixed;
+        top: -500px;
+      }
+      #doneTodoBtn {
+        position: relative;
+        top: 10px;
+        left: 30%;
+        padding: 5px;
+        border: none;
+        border-radius: 2px;
+        color: #000;
+        background: rgb(255,255,255,0.8);
+        transition: all 0.3s;
+        opacity: 1;
+        cursor: pointer;
+        outline: none;
+      }
+      #doneTodoBtn:hover {
+        transform: scale(0.97,0.97);
+      }
+      #doneTodoList {
+        list-style: none;
+        border: none;
+        padding: 0;
+        overflow-x: hidden; 
+        overflow-y: auto;
+      }
+      .doneTodoItem {
+        border: none;
+        margin-bottom: 3%;
+      }
+      .doneTodoItem div {
+        background: rgb(255,255,255,0.1);
+        color: #eee;
+        width: 100%;
+        padding: 1px;
+        text-align: center;
+        border-radius: 3px;
+        position: relative;
+      }
+      .doneTodoIcon {
+        color: lime;
+        position: relative;
+        float: right;
+        bottom: 22px;
+        right: 7px;
+      }
+      .doneTodoListContainer {
+        max-height: 320px;
+        overflow-y: scroll;
+      }
+      
+      #clearDataBtn {
+        position: relative;
+        font-size: 0.8em;
+        left: -30%;
+        top: 10px;
+        color: #5ccce8;
+      }
+      
+      .iconify { 
+        vertical-align: middle;
+      }
+
+      .fadeIn {
+        animation: fadeIn 0.3s linear;
+      }
+      .fadeOut {
+        animation: fadeOut 0.3s linear;
+      }
+      .slideDown {
+        animation: slideDown 0.7s ease-in-out;
+      }
+      .slideUp {
+        animation: slideUp 0.7s ease-in-out;
+      }
+      @keyframes fadeIn {
+        0% { opacity: 0; }
+        50% { opacity: 0.5; }
+        100% { opacity: 1; }
+      }
+      @keyframes fadeOut {
+        0% { opacity: 1; }
+        50% { opacity: 0.5; }
+        100% { opacity: 0; }
+      }
+      @keyframes slideDown {
+        60% { top: 50px; }
+        80% { top: 40px; }
+        100% { top: 50px; }
+      }
+      @keyframes slideUp {
+        30% { top: 35px; }
+        50% { top: 50px; }
+        100% { top: -500px; }
+      }
+      
+      @media only screen and (max-width: 400px) {
+        .container { 
+          max-width: 330px;
+        }
+        #doneTodoBtn {
+          left: 25%;
+        }
+        #clearDataBtn {
+          left: -25%;
+        }
+        .doneTodoContainer {
+          width: 290px;
+        }
+        ::-webkit-scrollbar {
+          background: transparent;
+          width: 0px;
+        }
+      }
