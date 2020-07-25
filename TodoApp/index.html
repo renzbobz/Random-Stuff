@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Todo app</title>
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <link href="style.css" type="text/css">
+  </head>
+  <body class="fadeIn">
+    
+    <div class="container center">
+      <a href="#" id="clearDataBtn" onclick="clearData();location.reload();">Clear data</a>
+      <button id="doneTodoBtn" onclick="toggleDoneTodos();">Done todos <iconify-icon data-icon="uil:angle-down"></iconify-icon></button>
+      <div class="doneTodoContainer">
+        <h3 style="text-align: left; margin-bottom: 10px;">#Done todo list</h3>
+        <div class="doneTodoListContainer">
+          <ul id="doneTodoList"></ul>
+        </div>
+      </div>
+      <h2>Todo App</h2>
+      <form id="todoForm">
+        <input type="text" id="todoInput" placeholder="Write something..."/>
+        <button id="todoBtn"><iconify-icon data-icon="uil:message"></iconify-icon></button>
+      </form>
+      <div>
+        <h3 style="text-align: left;">#Todo list</h3>
+        <div class="todoListContainer">
+          <ul id="todoList"></ul>
+        </div>
+      </div>
+    </div>
+    
+    <script src="index.js" onerror="location.reload()">
+  </body>
+</html>
