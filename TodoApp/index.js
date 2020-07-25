@@ -235,7 +235,7 @@
             
           });
           v.addEventListener("touchend", e => {
-            e.preventDefault();
+            //e.preventDefault();
             const div = v.children[0];
             const li = v;
             if (doneOnTouchEnd) doneTodoItem(li);
