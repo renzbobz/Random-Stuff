@@ -2,10 +2,7 @@
       window.el = s => s.substring(0,1) == "." ? document.querySelectorAll(s) : document.querySelector(s);
       window.getData = _ => localStorage.getItem("todoListData");
       window.setData = d => localStorage.setItem("todoListData", d);
-      window.clearData = _ => { 
-        localStorage.removeItem("todoListData"); 
-        noContent("clear"); 
-      }
+      window.clearData = _ => localStorage.removeItem("todoListData");
     
       const todoInput = el("#todoInput");
       const inputPlaceHolder = todoInput.placeholder;
@@ -101,10 +98,6 @@
           p.id = "doneTodo404";
           p.textContent = "No done todo's yet.";
           doneTodoList.append(p);
-        } else if (type == "clear") {
-          const p = document.createElement("p");
-          p.textContent = "Data cleared !";
-          todoList.append(p);
         } else {
           if (el("#todo404")) return;
           const p = document.createElement("p");
