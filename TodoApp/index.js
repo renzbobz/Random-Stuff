@@ -254,10 +254,13 @@
             const ul = li.parentNode;
             data.forEach((todo, i) => {
               if (todo.id == todoId) {
-                data.splice(i, 1);
-                const newData = JSON.stringify(data);
-                setData(newData);
-                
+                try {
+                  data.splice(i, 1);
+                  const newData = JSON.stringify(data);
+                  setData(newData);
+                } catch(e) {
+                  location.reload();
+                }
                 const p = document.createElement("p");
                 p.textContent = "Todo deleted !";
                 p.style.color = "red";
