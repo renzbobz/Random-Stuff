@@ -1,4 +1,4 @@
-# My first js basic game
+# My first js basic game (Old)
 
 Using vanilla js
 
