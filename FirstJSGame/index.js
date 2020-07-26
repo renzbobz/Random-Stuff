@@ -1,4 +1,5 @@
 const $ = el => document.querySelector(el);
+const getHighScore = _ => localStorage.getItem("highScore");
 
 const character = $("#character");
 const dieblock = $("#dieblock");
@@ -8,7 +9,7 @@ const helpStart = $("#helpStart");
 
 let score = 0, started = false, died = false;
 
-const highScore = localStorage.getItem("highScore") || 0;
+const highScore = getHighScore() || 0;
 hScoreEl.textContent = highScore;
 
 window.addEventListener("click",_ => {
@@ -37,7 +38,7 @@ function game() {
     and characterTop >= 170 (gamecontainerHeight + dieblockHeight)
   */
   if (bLeft < 50 && bLeft > 0 && cTop >= 170) {
-    if (score > highScore) {
+    if (score > getHighScore()) {
       localStorage.setItem("highScore", score);
       hScoreEl.textContent = score;
     }
