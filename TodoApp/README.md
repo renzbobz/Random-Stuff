@@ -1,5 +1,7 @@
 # Todo App
 
+[New]
+
 I didnt test this on pc yet but it works great in mobile phones 
 
 [View here](https://renzbobz.github.io/Random-Stuff/TodoApp/)
