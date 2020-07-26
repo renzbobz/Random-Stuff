@@ -1,5 +1,5 @@
 # Meme Generator
 
-(Old)
+[Old]
 
 [View here](https://renzbobz.github.io/Random-Stuff/MemeGenerator)
