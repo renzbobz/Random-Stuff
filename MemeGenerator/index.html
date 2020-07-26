@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <title>Meme generator</title>
+    <style>
+    * {
+        outline: none;
+        user-select: none;
+    }
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background: #eee;
+      }
+      
+      nav {
+        padding: 3px;
+        text-align: center;
+        background: #282c2d;
+      }
+      nav h2 {
+        color: white;
+        letter-spacing: 1px;
+      }
+      
+      input[type="file"],
+      input[type="checkbox"] {
+        display: none;
+      }
+      
+      input[type="text"] {
+        background: none;
+        padding: 10px;
+        font-size: 1em;
+        border: 2px solid #282c2d;
+        border-radius: 3px;
+        outline: none;
+        color: #282c2d;
+      }
+      input[type="color"] {
+        outline: none;
+        border: 2px solid #282c2d;
+        padding: 5px 5px;
+        border-radius: 3px;
+        background: none;
+      }
+      
+      button {
+        padding: 10px 13px;
+        border-radius: 3px;
+        border: 2px solid #282c2d;
+        background: #282c2d;
+        color: white;
+        outline: none;
+        font-size: 1em;
+        transition: all 0.1s linear;
+      }
+      button:hover {
+        background: none;
+        color: #282c2d;
+        border: 2px solid #282c2d;
+      }
+      button:active {
+        opacity: 0.5;
+      }
+      
+      label.file {
+        width: 50%;
+        padding: 15px 10px;
+        margin-left: 22%;
+        margin-top: 35%;
+        background: none;
+        color: black;
+        border: 2px solid #282c2d;
+        font-weight: bold;
+        font-size: 1em;
+        border-radius: 3px;
+        text-align: center;
+        transition: all 0.1s linear;
+      }
+      label.file:hover {
+        background: #282c2d;
+        color: #eee;
+      }
+     
+      label {
+        display: block;
+        font-weight: 400;
+      }
+      
+      .container {
+        margin: auto;
+        width: 90%;
+      }
+      
+      .canvas-holder {
+        width: 100%;
+        height: 300px;
+        border: 3px dashed #282c2d;
+        background: #eee;
+        margin-top: 10%;
+      }
+      
+      .background-choose {
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      
+      
+      .config {
+        margin-top: 10%;
+        width: 100%;
+        height: 300px;
+        display: none;
+      }
+      
+      .config-top {
+        display: none;
+      }
+      
+      .config-top a {
+        text-decoration: none;
+        color: #282c2d;
+        padding: 3px 5px;
+        border: 1px solid #282c2d;
+        border-radius: 4px;
+        margin-right: 2%;
+        transition: all 0.1s linear;
+      }
+      .config-top a:hover {
+        color: #eee;
+        background: #282c2d;
+      }
+      
+      
+      #cv {
+        width: 100%;
+        height: 300px;
+        display: none;
+      }
+      
+      
+      .loader {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 2px solid #282c2d;
+        border-right: 2px solid transparent;
+        animation: spin 1s linear infinite;
+        display: none;
+        margin-top: 35%;
+        margin-left: 40%;
+      }
+      
+      @keyframes spin {
+        100% { transform: rotate(360deg); }
+      }
+      
+      #l2 {
+        margin-top: -45%;
+      }
+
+    </style>
+  </head>
+  <body>
+     
+     
+     <nav>
+       <h2>Meme Generator</h2>
+     </nav>
+     
+     <div class="container">
+       <div class="config-top">
+         <a onclick="New()">New</a>
+         <a onclick="$('#changeimage').click()">Change image</a>
+         <input type="file" id="changeimage" onchange="changeImage(this);" style="display: none;" />
+       </div>
+       
+       <div class="canvas-holder">
+         <div class="background-choose">
+           <label class="file">
+             SELECT IMAGE <input type="file" id="image" onchange="canvasBackground(this)" />
+           </label>
+           <div class="loader"></div>
+         </div>
+         <center><p id="err" style="color:red;"></p></center>
+         <canvas id="cv"></canvas>
+         <div class="loader" id="l2"></div>
+       </div>
+       
+       <div class="config">
+         <label for="txtColor">Text color</label>
+         <input type="color" id="txtColor" value="#ffffff" />
+         <br /><br />
+         <label for="topText">Top text</label>
+         <input type="text" id="topText" placeholder="Text here"/>
+         <br /><br />
+         <label for="bottomText">Bottom text</label>
+         <input type="text" id="bottomText" placeholder="Text here"/>
+         
+         <br /><br />
+         
+         <button onclick="saveChanges()">Save changes</button>
+         <button onclick="Download()">Download</button>
+       </div>
+     </div>
+    
+    
+    <script>
+    
+      const toptext = $("#topText"),
+            bottomtext = $("#bottomText"),
+            txtColor = $("#txtColor");
+            
+      const cv = $("#cv");
+      const ctx = cv.getContext("2d");
+      
+      function saveChanges() {
+        ctx.font = "20px Monospace";
+        ctx.fillStyle = txtColor.value;
+        const toptextW = ctx.measureText(toptext.value).width,
+              bottomTextW = ctx.measureText(bottomtext.value).width;
+       
+        // top text
+        ctx.fillText(toptext.value , (cv.width/2) - (toptextW / 2), 25);
+        // bottom text
+        ctx.fillText(bottomtext.value , (cv.width/2) - (bottomTextW / 2), 140);
+      }
+      
+      
+      function Download() {
+        const url = cv.toDataURL(),
+              a = document.createElement("a");
+        document.body.appendChild(a);
+        a.href = url;
+        a.download = Date.now();
+        a.click();
+        document.body.removeChild(a);
+      }
+      
+      function New() {
+        ctx.clearRect(0,0,cv.width,cv.height);
+        // to show
+        $(".background-choose").style.display = "block";
+        $(".canvas-holder").style.border = "3px dashed #282c2d";
+        $("label.file").style.display = "block";
+        // to hide
+        $(".config-top").style.display = "none";
+        $(".config").style.display = "none";
+        cv.style.display = "none";
+        $(".loader").style.display = "none";
+        // erase value of inputs
+        toptext.value = "";
+        bottomtext.value = "";
+        txtColor.value = "#ffffff";
+      }
+      
+      
+      function changeImage(input) {
+          $("#l2").style.display = "block";
+          const img = new Image();
+          const url = input.value;
+          const ext = url.substr(-3).toLowerCase();
+
+         if (input.files && input.files[0] && (ext == "png" || ext == "jpeg" || ext == "jpg")) {
+            ctx.clearRect(0,0,cv.width,cv.height);
+            
+            const reader = new FileReader();
+            reader.onload = function (e) { img.src = e.target.result; }
+
+            reader.readAsDataURL(input.files[0]);
+          }else{
+            errLoadingCanvas("Your file is not an image.");
+            $("#l2").style.display = "none";
+            return;
+          }
+
+          img.onload = () => {
+            ctx.drawImage(img, 0, 0, img.width, img.height,
+                               0, 0, cv.width, cv.height); 
+            saveChanges();
+            $("#l2").style.display = "none";
+          }
+
+      }
+    
+      
+      function canvasBackground(input) {
+          loadingCanvas();
+          const img = new Image();
+          
+          const url = input.value;
+          const ext = url.substr(-3).toLowerCase();
+
+         if (input.files && input.files[0] && (ext == "png" || ext == "jpeg" || ext == "jpg")) {
+            const reader = new FileReader();
+            reader.onload = function (e) { img.src = e.target.result; }
+
+            reader.readAsDataURL(input.files[0]);
+          }else{
+            errLoadingCanvas("Your file is not an image.");
+            return;
+          }
+
+          img.onload = () => {
+            ctx.drawImage(img, 0, 0, img.width, img.height,
+                               0, 0, cv.width, cv.height); 
+           hideHolder();
+          }
+      }
+      
+      
+      function loadingCanvas() {
+        $("label.file").style.display = "none";
+        $(".loader").style.display = "block";
+      }
+      
+      function errLoadingCanvas(res) {
+        $("label.file").style.display = "block";
+        $(".loader").style.display = "none";
+        $("#err").textContent = res;
+        setTimeout(_ => {
+          $("#err").textContent = "";
+        }, 3000);
+      }
+      
+      function hideHolder() {
+        // to hide
+        $(".background-choose").style.display = "none";
+        $(".canvas-holder").style.border = "none";
+        // to show
+        $(".config-top").style.display = "block";
+        $(".config").style.display = "block";
+        cv.style.display = "block";
+      }
+    
+      function $(el) {
+        return document.querySelector(el);
+      }
+ 
+    </script>
+  </body>
+</html>
