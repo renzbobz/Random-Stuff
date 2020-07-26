@@ -1,6 +1,4 @@
-# Todo App
-
-[New]
+# Todo App (New)
 
 I didnt test this on pc yet but it works great in mobile phones 
 
