@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Calculator</title>
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+  </head>
+  <body>
+    
+    <div class="calculator">
+      <div class="header">
+        <div id="expression"></div>
+        <div id="alt-result"></div>
+      </div>
+      <div class="body">
+        <div id="history">
+          <ul id="history-list"></ul>
+        </div>
+        <div class="buttons">
+          
+          <button id="hide-btns" onclick="hideButtons();"></button>
+          
+          <button class="btn" id="c">C</button>
+          <button class="btn">%</button>
+          <button class="btn" id="del"><iconify-icon data-icon="uil:backspace"></iconify-icon></button>
+          <button class="btn blue">÷</button>
+          
+          <button class="btn">7</button>
+          <button class="btn">8</button>
+          <button class="btn">9</button>
+          <button class="btn blue">×</button>
+          
+          <button class="btn">4</button>
+          <button class="btn">5</button>
+          <button class="btn">6</button>
+          <button class="btn blue">-</button>
+          
+          <button class="btn">1</button>
+          <button class="btn">2</button>
+          <button class="btn">3</button>
+          <button class="btn blue">+</button>
+          
+          <button class="btn">0</button>
+          <button class="btn">00</button>
+          <button class="btn">.</button>
+          <button class="btn blue" id="=">=</button>
+          
+        </div>
+        <div class="footer">
+          <button onclick="showButtons();"><iconify-icon data-icon="uil:angle-up"></iconify-icon><p>Continue</p></button>
+          <button onclick="clearHistory();"><iconify-icon data-icon="uil:trash-alt"></iconify-icon><p>Clear</p></button>
+        </div>
+
+      </div>
+    </div>
+    
+    <div id="change-mode-btn" onclick="changeMode(this);">
+      <iconify-icon data-icon="uil:sun"></iconify-icon>
+    </div>
+    
+    <script src="index.js" type="text/javascript"></script>
+  </body>
+</html>
