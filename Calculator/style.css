@@ -18,7 +18,7 @@ body.light-mode {
 .calculator {
   max-width: 400px;
   padding: 3px;
-  margin: 50% auto;
+  margin: auto;
 }
 
 button {
@@ -291,9 +291,6 @@ body.light-mode #change-mode-btn {
 
 
 @media only screen and (max-width: 400px) {
-  .calculator {
-    margin: auto;
-  }
   button {
     cursor: none;
   }
