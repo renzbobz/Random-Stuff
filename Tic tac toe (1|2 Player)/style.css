@@ -1,0 +1,195 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&display=swap');
+
+:root {
+  --lighten: rgb(255,255,255,0.1);
+  --darken: rgb(0,0,0,0.1);
+  --neon-blue: #2efbf4;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: #eee;
+  background: #04273a;
+  font-family: 'Nunito', Sans-Serif;
+}
+
+button {
+  width: 100%;
+  border: none;
+  background: var(--lighten);
+  padding: 10px 15px;
+  font-size: 1.3em;
+  color: #eee;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+}
+button:hover {
+  background: var(--darken);
+}
+button:active {
+  border: 1px solid var(--neon-blue);
+}
+
+.container {
+  max-width: 400px;
+  margin: auto;
+}
+
+.game {
+  width: 300px;
+  height: 300px;
+  display: none;
+  grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+  grid-gap: 3px;
+  position: relative;
+  background: var(--darken);
+}
+
+.box {
+  font-weight: lighter;
+  display: none;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 15px;
+  color: var(--neon-blue);
+  width: 100%;
+  height: 100%;
+  font-size: 3.5em;
+  background: var(--lighten);
+}
+
+
+.player-container {
+  display: none;
+  width: 100%;
+}
+
+.player {
+  transition: all 0.3s;
+  font-size: 1.5em;
+  padding: 10px 15px;
+  background: var(--lighten);
+}
+
+.player:first-child {
+  float: left;
+}
+.player:last-child {
+  float: right;
+}
+
+#player1.active {
+  border-left: 3px solid lime;
+}
+#player2.active {
+  border-right: 3px solid lime;
+}
+.player.active {
+  background: rgb(0,255,0,0.1);
+}
+
+
+.choose-container {
+  display: none;
+  width: 250px;
+  padding: 10px;
+  text-align: center;
+  background: var(--lighten);
+}
+.choose-container p {
+  font-size: 1.5em;
+  margin: 10px;
+}
+.choose-container div {
+  display: flex;
+  justify-content: space-around;
+}
+.choose-container div div {
+  color: var(--neon-blue);
+  font-size: 4em;
+  font-weight: lighter;
+  text-align: center;
+  padding: 10px;
+  width: 50%;
+  height: 50%;
+  margin: 5px 3px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.1s;
+  background: var(--lighten);
+}
+.choose-container div div:hover {
+  background: var(--darken);
+}
+.choose-container div div:active {
+  border: 1px solid var(--neon-blue);
+}
+.choose-container button {
+  width: 98%;
+  margin: 0 3px;
+}
+
+
+.title {
+  width: 100%;
+  padding: 10px 0;
+  text-align: center;
+  background: var(--lighten);
+}
+
+.center {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+}
+
+#round {
+  display: none;
+}
+
+
+#game-mode {
+  display: none;
+  width: 250px;
+  height: 250px;
+  padding: 15px;
+  text-align: center;
+  box-sizing: border-box;
+  background: var(--lighten);
+}
+#game-mode button {
+  margin: 5px 0;
+  font-size: 1.5em;
+  transition: all 0.3s;
+}
+
+#winner {
+  display: none;
+  width: 300px;
+  height: 150px;
+  padding: 0 10px;
+  text-align: center;
+  background: var(--lighten);
+}
+#winner p {
+  font-size: 1.8em;
+}
+#winner button {
+  display: inline-block;
+  width: 48%;
+}
+
+
+@media only screen and (max-width: 400px) {
+  button {
+    cursor: none;
+  }
+  .choose-container div div {
+    cursor: none;
+  }
+}
+
