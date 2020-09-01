@@ -6,4 +6,4 @@ Coded on phone - 8/31/20
 
 
 ![Screenshot](images/0.png)
-![Screenshot(images/1.png)
+![Screenshot](images/1.png)
