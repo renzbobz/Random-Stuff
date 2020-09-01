@@ -189,6 +189,9 @@ button:active {
   button {
     cursor: none;
   }
+  .box {
+    cursor: none;
+  }
   .choose-container div div {
     cursor: none;
   }
