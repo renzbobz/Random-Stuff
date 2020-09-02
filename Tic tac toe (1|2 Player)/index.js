@@ -370,6 +370,7 @@ Game.again = function() {
       this.playerActive = 1;
     }
   }
+  this.currentRound = 1;
   
   // hides winner el
   this.toggleWinner();
@@ -380,7 +381,7 @@ Game.again = function() {
 };
 
 // Player 1 vs Bot
-// Randomize turn
+// Random response only
 Game.botResponse = function() {
   
   const boxAry = [];
